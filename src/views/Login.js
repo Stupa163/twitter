@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Title, Form, LoginInput, LoginLabel, LoginButtonContainer, SubmitButton, BackArrow} from "../styled";
+import {Title, Form, SubmitButton, BackArrow} from "../styled";
+import {LoginInput, LoginLabel, LoginButtonContainer} from "../styled/Login";
 import {Link} from "react-router-dom";
 
 const Login = (props) => {

@@ -1,5 +1,6 @@
 import React from 'react';
-import {TweetContainer, TweetContent, TweetImage, Title} from "../styled";
+import {Title} from "../styled";
+import {TweetContainer, TweetContent, TweetImage} from "../styled/Tweet";
 
 const Tweet = (props) => {
     const {pseudo, content, image} = props;

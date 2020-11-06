@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../components/Navbar";
 import TweetsList from "../components/TweetsList";
-import {HomeButton, HomeMoto, TweetsContainer} from "../styled";
+import {TweetsContainer} from "../styled";
+import {HomeButton, HomeMoto} from "../styled/Home";
 import {Link} from "react-router-dom";
 
 const Home = (props) => {
