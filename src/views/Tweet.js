@@ -31,6 +31,10 @@ const Tweet = (props) => {
                 source: e.target.files[0],
                 format: 'redirect'
             },
+            referrerPolicy: 'no-referrer',
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
             .then((response) => {
                 console.log(response);
