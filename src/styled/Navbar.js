@@ -14,7 +14,12 @@ const NavbarUl = styled.ul`
 
 const NavbarLi = styled.li`
   float: left;
-  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
-export {NavbarUl, NavbarLi};
+const NavbarSvg = styled.svg`
+  width: 40px;
+`;
+
+export {NavbarUl, NavbarLi, NavbarSvg};
