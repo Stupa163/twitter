@@ -1,13 +1,14 @@
 import React from 'react';
-import {TweetContainer, TweetContent, TweetTitle} from "../styled";
+import {TweetContainer, TweetContent, TweetImage, TweetTitle} from "../styled";
 
 const Tweet = (props) => {
-    const {pseudo, content} = props;
+    const {pseudo, content, image} = props;
 
     return (
         <TweetContainer>
             <TweetTitle>{pseudo}</TweetTitle>
             <TweetContent>{content}</TweetContent>
+            <TweetImage src={image} alt=""/>
         </TweetContainer>
     )
 };

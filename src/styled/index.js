@@ -20,6 +20,7 @@ const NavbarLi = styled.li`
 const TweetForm = styled.form`
   width: 90vw;
   margin-left: 5vw;
+  margin-bottom: 150px;
 `;
 
 const PaddedInput = styled.input`
@@ -70,6 +71,7 @@ const TweetsContainer = styled.div`
 
 const TweetContainer = styled.div`
   border-bottom: 1px solid lightgray;
+  padding-bottom: 25px;
 `;
 
 const TweetTitle = styled.h2`
@@ -80,6 +82,12 @@ const TweetContent = styled.p`
   text-align: justify;
   width: 95vw;
   margin-left: 5vw;
+`;
+
+const TweetImage = styled.img`
+  margin: auto;
+  display: block;
+  max-width: 100vw;
 `;
 
 export {
@@ -94,5 +102,6 @@ export {
     TweetsContainer,
     TweetContainer,
     TweetTitle,
-    TweetContent
+    TweetContent,
+    TweetImage
 }

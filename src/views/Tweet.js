@@ -9,11 +9,13 @@ import {
     TweetSubmitButton
 } from "../styled";
 import {Link} from "react-router-dom";
+import FileUtils from '../utils/File'
 
 const Tweet = (props) => {
 
     const [pseudo, setPseudo] = useState('');
     const [content, setContent] = useState('');
+    const [image, setImage] = useState('');
     const [disabled, setDisabled] = useState(true);
 
     useEffect(() => {
@@ -21,33 +23,15 @@ const Tweet = (props) => {
     }, [pseudo, content])
 
     const handleImageUpload = (e) => {
-        console.log(e.target.files[0]);
-
-        fetch('https://freeimage.host/api/1/upload/', {
-            method: 'POST',
-            body: {
-                key: '6d207e02198a847aa98d0a2a901485a5',
-                action: 'upload',
-                source: e.target.files[0],
-                format: 'redirect'
-            },
-            referrerPolicy: 'no-referrer',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        FileUtils.getBase64(e.target.files[0], (res) => {
+            setImage(res);
         })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((err) => {
-                console.log(err)
-            })
     }
 
     const handleSubmit = () => {
         if (!disabled) {
             const tweets = JSON.parse(localStorage.getItem('tweets')) || [];
-            tweets.push({pseudo, content})
+            tweets.push({pseudo, content, image})
             localStorage.setItem('tweets', JSON.stringify(tweets));
             props.history.push('/')
         }
@@ -77,7 +61,7 @@ const Tweet = (props) => {
                     setContent(e.target.value)
                 }}/>
 
-                <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleImageUpload}/>
+                <PaddedInput type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleImageUpload}/>
             </TweetForm>
         </div>
     )
