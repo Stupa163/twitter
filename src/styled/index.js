@@ -17,7 +17,51 @@ const NavbarLi = styled.li`
   padding: 10px;
 `;
 
-const TweetForm = styled.form`
+const HomeMoto = styled.h1`
+  margin-top: 35vh;
+  text-align: center;
+  font-size: 30px;
+  width: 85vw;
+  margin-left: 7.5vw;
+`;
+
+const HomeButton = styled.button`
+  background-color: #1DA1F2;
+  width: 85vw;
+  margin: 15px 7.5vw 7.5vw;
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+`;
+
+const LoginButtonContainer = styled.div`
+  background-color: white;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid lightgray;
+`;
+
+const LoginLabel = styled.label`
+  color: gray;
+`;
+
+const LoginInput = styled.input`
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 80vw;
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 20px 20px 10px 10px;
+  &:focus {
+    border-bottom: 2px solid #1DA1F2;    
+  }
+`;
+
+const Form = styled.form`
   width: 90vw;
   margin-left: 5vw;
   margin-bottom: 150px;
@@ -40,13 +84,13 @@ const PaddedTextArea = styled.textarea`
   border: 2px solid #1DA1F2;
 `;
 
-const TweetSubmitButton = styled.button`
+const SubmitButton = styled.button`
   background-color: #1DA1F2;
   border-radius: 30px;
   padding: 10px 30px;
   border: none;
   float: right;
-  margin: 20px 20px 5px;
+  margin: 20px 20px 20px;
   color: white;
   
   ${({disabled}) => disabled && `
@@ -55,7 +99,7 @@ const TweetSubmitButton = styled.button`
 
 `;
 
-const TweetBackArrow = styled.svg`
+const BackArrow = styled.svg`
   width: 10vw;
   margin: 20px 20px 5px;
 `;
@@ -74,7 +118,7 @@ const TweetContainer = styled.div`
   padding-bottom: 25px;
 `;
 
-const TweetTitle = styled.h2`
+const Title = styled.h2`
   margin-left: 5vw;
 `;
 
@@ -93,15 +137,20 @@ const TweetImage = styled.img`
 export {
     NavbarUl,
     NavbarLi,
-    TweetForm,
+    HomeMoto,
+    HomeButton,
+    Form,
     PaddedInput,
     PaddedTextArea,
-    TweetSubmitButton,
-    TweetBackArrow,
+    SubmitButton,
+    BackArrow,
     TweetButtonsContainer,
     TweetsContainer,
     TweetContainer,
-    TweetTitle,
+    Title,
     TweetContent,
-    TweetImage
+    TweetImage,
+    LoginInput,
+    LoginLabel,
+    LoginButtonContainer
 }
