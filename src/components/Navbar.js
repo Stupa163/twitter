@@ -9,6 +9,9 @@ const Navbar = (props) => {
                 <NavbarLi>
                     <Link to="/">Home</Link>
                 </NavbarLi>
+                <NavbarLi>
+                    <Link to="/tweet">Tweet</Link>
+                </NavbarLi>
             </NavbarUl>
         </nav>
     );
