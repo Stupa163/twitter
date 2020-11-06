@@ -18,6 +18,7 @@ const LoginInput = styled.input`
   width: 80vw;
   font-size: 20px;
   margin-top: 20px;
+  margin-left: ${props => props.margin_left};
   padding: 20px 20px 10px 10px;
   &:focus {
     border-bottom: 2px solid #1DA1F2;    
