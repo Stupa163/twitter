@@ -9,7 +9,6 @@ import {
     TweetSubmitButton
 } from "../styled";
 import {Link} from "react-router-dom";
-import axios from 'axios';
 
 const Tweet = (props) => {
 
