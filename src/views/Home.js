@@ -13,7 +13,7 @@ const Home = (props) => {
     useEffect(() => {
         axios.get('https://twiiter-api.herokuapp.com/')
             .then((res) => {
-                setTweets(res.data.content)
+                setTweets(res.data.content.reverse())
             })
     }, [])
 
