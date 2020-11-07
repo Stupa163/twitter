@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BigBlueBlock, HiddenInputFile, ProfileImage} from "../styled/Profile";
-import FileUtils from '../utils/File'
+import {getBase64} from '../utils/File'
 import {LoginInput} from "../styled/Login";
 import Navbar from "../components/Navbar";
 
@@ -9,7 +9,7 @@ const Profile = (props) => {
     const [pseudo, setPseudo] = useState(localStorage.getItem('pseudo'));
 
     const handleImageChange = (e) => {
-        FileUtils.getBase64(e.target.files[0], (res) => {
+        getBase64(e.target.files[0], (res) => {
             localStorage.setItem('profilePicture', res);
             setImage(res);
         })

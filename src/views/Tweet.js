@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Navbar from "../components/Navbar";
 import {
     PaddedTextArea,
     BackArrow,
@@ -9,7 +8,7 @@ import {
     MiniProfilePicture
 } from "../styled";
 import {Link} from "react-router-dom";
-import FileUtils from '../utils/File'
+import {getBase64} from '../utils/File'
 import axios from 'axios';
 import {HiddenInputFile} from "../styled/Profile";
 import {NavbarSvg} from "../styled/Navbar";
@@ -30,7 +29,7 @@ const Tweet = (props) => {
     }, [content])
 
     const handleImageUpload = (e) => {
-        FileUtils.getBase64(e.target.files[0], (res) => {
+        getBase64(e.target.files[0], (res) => {
             setImage(res);
         })
     }
