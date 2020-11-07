@@ -8,7 +8,7 @@ const TweetsList = (props) => {
         <div>
             {
                 tweets.map((tweet, key) => {
-                    return <Tweet pseudo={tweet.pseudo} content={tweet.content} image={tweet.image} key={key}/>
+                    return <Tweet pseudo={tweet.pseudo} content={tweet.content} image={tweet.image} key={key} profilePicture={tweet.userImage}/>
                 })
             }
         </div>

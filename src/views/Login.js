@@ -8,6 +8,7 @@ const Login = (props) => {
 
     const handleSubmit = () => {
         localStorage.setItem('pseudo', pseudo);
+        localStorage.setItem('profilePicture', 'https://listimg.pinclipart.com/picdir/s/351-3519728_png-file-svg-default-profile-picture-free-clipart.png');
         props.history.push('/')
     }
 

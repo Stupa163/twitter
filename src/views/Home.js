@@ -4,13 +4,17 @@ import TweetsList from "../components/TweetsList";
 import {TweetsContainer} from "../styled";
 import {HomeButton, HomeMoto} from "../styled/Home";
 import {Link} from "react-router-dom";
+import axios from 'axios';
 
 const Home = (props) => {
 
     const [tweets, setTweets] = useState([]);
 
     useEffect(() => {
-        setTweets(JSON.parse(localStorage.getItem('tweets')) || []);
+        axios.get('https://twiiter-api.herokuapp.com/')
+            .then((res) => {
+                setTweets(res.data.content)
+            })
     }, [])
 
     const HomeLogged = (

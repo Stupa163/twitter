@@ -3,24 +3,23 @@ import styled from 'styled-components'
 const Form = styled.form`
   width: 90vw;
   margin-left: 5vw;
-  margin-bottom: 150px;
 `;
 
-const PaddedInput = styled.input`
-  padding: 15px;
-  margin-top: 30px;
-  width: 80vw;
-  border-radius: 15px;
-  border: 2px solid #1DA1F2;
+const MiniProfilePicture = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-top: 25px;
+  border-radius: 50%;
+  margin-right: 50px;
 `;
 
 const PaddedTextArea = styled.textarea`
   margin-top: 30px;
   padding: 15px;
-  width: 80vw;
-  height: 50vh;
+  width: 85vw;
+  height: 30vh;
   border-radius: 15px;
-  border: 2px solid #1DA1F2;
+  border: none;
 `;
 
 const SubmitButton = styled.button`
@@ -49,10 +48,20 @@ const TweetButtonsContainer = styled.div`
 
 const TweetsContainer = styled.div`
   width: 100vw;
+  padding-bottom: 74px;
 `;
 
 const Title = styled.h2`
   margin-left: 5vw;
 `;
 
-export {Form, PaddedInput, PaddedTextArea, SubmitButton, BackArrow, TweetButtonsContainer, TweetsContainer, Title};
+export {
+    Form,
+    MiniProfilePicture,
+    PaddedTextArea,
+    SubmitButton,
+    BackArrow,
+    TweetButtonsContainer,
+    TweetsContainer,
+    Title
+};

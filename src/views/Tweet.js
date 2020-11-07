@@ -1,26 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../components/Navbar";
 import {
-    PaddedInput,
     PaddedTextArea,
     BackArrow,
     TweetButtonsContainer,
     Form,
-    SubmitButton
+    SubmitButton,
+    MiniProfilePicture
 } from "../styled";
 import {Link} from "react-router-dom";
 import FileUtils from '../utils/File'
+import axios from 'axios';
+import {HiddenInputFile} from "../styled/Profile";
+import {NavbarSvg} from "../styled/Navbar";
 
 const Tweet = (props) => {
 
-    const [pseudo, setPseudo] = useState('');
+    const [profilePicture, setProfilePicture] = useState('')
     const [content, setContent] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState({});
     const [disabled, setDisabled] = useState(true);
 
     useEffect(() => {
-        setDisabled(!(pseudo.length > 0 && content.length > 0))
-    }, [pseudo, content])
+        setProfilePicture(localStorage.getItem('profilePicture'));
+    }, [])
+
+    useEffect(() => {
+        setDisabled(!(content.length > 0))
+    }, [content])
 
     const handleImageUpload = (e) => {
         FileUtils.getBase64(e.target.files[0], (res) => {
@@ -30,16 +37,26 @@ const Tweet = (props) => {
 
     const handleSubmit = () => {
         if (!disabled) {
-            const tweets = JSON.parse(localStorage.getItem('tweets')) || [];
-            tweets.push({pseudo, content, image})
-            localStorage.setItem('tweets', JSON.stringify(tweets));
-            props.history.push('/')
+            axios.post('https://twiiter-api.herokuapp.com/', {
+                userImage: localStorage.getItem('profilePicture'),
+                pseudo: localStorage.getItem('pseudo'),
+                image: image,
+                content: content
+            })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+                .finally(() => {
+                    props.history.push('/')
+                })
         }
     }
 
     return (
         <div>
-            <Navbar/>
             <TweetButtonsContainer>
                 <Link to="/">
                     <BackArrow viewBox="0 0 24 24">
@@ -52,16 +69,21 @@ const Tweet = (props) => {
                 <SubmitButton disabled={disabled} type="submit" onClick={handleSubmit}>Tweet</SubmitButton>
             </TweetButtonsContainer>
             <Form action="">
-                <label htmlFor="pseudo"/>
-                <PaddedInput id="pseudo" placeholder="Your pseudo" type="text" onChange={(e) => {
-                    setPseudo(e.target.value)
-                }}/>
+                <MiniProfilePicture src={profilePicture} alt=""/>
+
+                <label htmlFor="image">
+                    <NavbarSvg viewBox="0 0 24 24">
+                        <g fill="#1DA1F2">
+                            <path
+                                d="M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22h-.003c-.2 0-.393.08-.532.224l-4.317 4.384-1.813-1.806c-.14-.14-.33-.22-.53-.22-.193-.03-.395.08-.535.227L3.5 17.642V4.25c0-.413.337-.75.75-.75zm-.744 16.28l5.418-5.534 6.282 6.254H4.25c-.402 0-.727-.322-.744-.72zm16.244.72h-2.42l-5.007-4.987 3.792-3.85 4.385 4.384v3.703c0 .413-.337.75-.75.75z"/>
+                        </g>
+                    </NavbarSvg>
+                </label>
+                <HiddenInputFile id="image" type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleImageUpload}/>
                 <label htmlFor="content"/>
                 <PaddedTextArea id="content" placeholder="What's happening ?" onChange={(e) => {
                     setContent(e.target.value)
                 }}/>
-
-                <PaddedInput type="file" accept="image/x-png,image/gif,image/jpeg" onChange={handleImageUpload}/>
             </Form>
         </div>
     )

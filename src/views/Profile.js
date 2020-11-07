@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import {BigBlueBlock, HiddenInputFile, ProfileImage} from "../styled/Profile";
-import defaultPicture from '../assets/profile.png'
 import FileUtils from '../utils/File'
-import {LoginInput, LoginLabel} from "../styled/Login";
+import {LoginInput} from "../styled/Login";
 import Navbar from "../components/Navbar";
 
 const Profile = (props) => {
-    const [image, setImage] = useState(localStorage.getItem('profilePicture') || defaultPicture);
+    const [image, setImage] = useState(localStorage.getItem('profilePicture'));
     const [pseudo, setPseudo] = useState(localStorage.getItem('pseudo'));
 
     const handleImageChange = (e) => {

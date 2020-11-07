@@ -1,13 +1,26 @@
 import React from 'react';
-import {Title} from "../styled";
-import {TweetContainer, TweetContent, TweetImage} from "../styled/Tweet";
+import {
+    ImageAndTextContainer, TweetArobased,
+    TweetContainer,
+    TweetContent,
+    TweetImage,
+    TweetProfilePicture,
+    TweetTitle
+} from "../styled/Tweet";
 
 const Tweet = (props) => {
-    const {pseudo, content, image} = props;
+    const {pseudo, content, image, profilePicture} = props;
 
     return (
         <TweetContainer>
-            <Title>{pseudo}</Title>
+            <ImageAndTextContainer>
+                <TweetProfilePicture src={profilePicture}/>
+                <TweetTitle>
+                    {pseudo}
+                    <TweetArobased>@{pseudo.toLowerCase()}</TweetArobased>
+                </TweetTitle>
+
+            </ImageAndTextContainer>
             <TweetContent>{content}</TweetContent>
             <TweetImage src={image} alt=""/>
         </TweetContainer>
