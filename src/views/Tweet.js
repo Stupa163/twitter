@@ -12,6 +12,7 @@ import {getBase64} from '../utils/File'
 import axios from 'axios';
 import {HiddenInputFile} from "../styled/Profile";
 import {NavbarSvg} from "../styled/Navbar";
+import MyComponent from 'react-fullpage-custom-loader'
 
 const Tweet = (props) => {
 
@@ -19,6 +20,7 @@ const Tweet = (props) => {
     const [content, setContent] = useState('');
     const [image, setImage] = useState({});
     const [disabled, setDisabled] = useState(true);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
         setProfilePicture(localStorage.getItem('profilePicture'));
@@ -36,6 +38,7 @@ const Tweet = (props) => {
 
     const handleSubmit = () => {
         if (!disabled) {
+            setLoader(true);
             axios.post('https://twiiter-api.herokuapp.com/', {
                 userImage: localStorage.getItem('profilePicture'),
                 pseudo: localStorage.getItem('pseudo'),
@@ -56,6 +59,10 @@ const Tweet = (props) => {
 
     return (
         <div>
+            {
+                (loader) ? <MyComponent sentences={[]} fadeIn={true}/> : null
+            }
+
             <TweetButtonsContainer>
                 <Link to="/">
                     <BackArrow viewBox="0 0 24 24">
