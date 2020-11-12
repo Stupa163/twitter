@@ -20,4 +20,20 @@ const HomeButton = styled.button`
   color: white;
 `;
 
-export {HomeMoto, HomeButton};
+const OffLineError = styled.div`
+  display: none;
+  text-align: center;
+  font-size: 20px;
+  ${({ display }) => display && `
+    display: block;
+  `}
+`;
+
+const OffLineIcon = styled.svg`
+  margin: 20px auto auto;
+  display: block;
+  width: 15vw;
+  max-height: 50px;
+`;
+
+export {HomeMoto, HomeButton, OffLineError, OffLineIcon};

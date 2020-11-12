@@ -23,7 +23,7 @@ const Login = (props) => {
                 </BackArrow>
             </Link>
             <Title>Log in to Twitter</Title>
-            <Form><br/>
+            <Form onSubmit={handleSubmit}><br/>
                 <LoginLabel htmlFor="pseudo">The pseudo you will be using</LoginLabel>
                 <LoginInput id="pseudo" placeholder="Your pseudo" onChange={(e) => {setPseudo(e.target.value)}}/>
             </Form>

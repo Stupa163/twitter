@@ -13,6 +13,7 @@ import axios from 'axios';
 import {HiddenInputFile} from "../styled/Profile";
 import {NavbarSvg} from "../styled/Navbar";
 import MyComponent from 'react-fullpage-custom-loader'
+import {TweetImage} from "../styled/Tweet";
 
 const Tweet = (props) => {
 
@@ -62,7 +63,6 @@ const Tweet = (props) => {
             {
                 (loader) ? <MyComponent sentences={[]} fadeIn={true}/> : null
             }
-
             <TweetButtonsContainer>
                 <Link to="/">
                     <BackArrow viewBox="0 0 24 24">
@@ -76,7 +76,6 @@ const Tweet = (props) => {
             </TweetButtonsContainer>
             <Form action="">
                 <MiniProfilePicture src={profilePicture} alt=""/>
-
                 <label htmlFor="image">
                     <NavbarSvg viewBox="0 0 24 24">
                         <g fill="#1DA1F2">
@@ -90,6 +89,7 @@ const Tweet = (props) => {
                 <PaddedTextArea id="content" placeholder="What's happening ?" onChange={(e) => {
                     setContent(e.target.value)
                 }}/>
+                <TweetImage src={image} alt=""/>
             </Form>
         </div>
     )

@@ -17,7 +17,9 @@ const ProfileImage = styled.img`
 const HiddenInputFile = styled.input`
   opacity: 0;
   z-index: -1;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
 `
 
 export {BigBlueBlock, ProfileImage, HiddenInputFile}
