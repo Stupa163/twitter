@@ -10,6 +10,8 @@ const NavbarUl = styled.ul`
     background-color: white;
     border-top: 1px solid lightgray;
     width: 100vw;
+    display: flex;
+    justify-content: space-between;
 `;
 
 const NavbarLi = styled.li`
